@@ -1,60 +1,31 @@
 # Real-Time Weather Dashboard
 
 
-A MERN stack application built for the Afford Medical coding contest that displays real-time weather data for any city worldwide.
+A full-stack weather monitoring application built with modern web technologies featuring real-time data visualization and dynamic UI.
 
-## Features Implemented
+## Features ✨
 
-✅ **Core Requirements**
-- City search functionality
-- Real-time weather data display (temperature, conditions, humidity, wind speed)
-- Clean, responsive UI
-- Error handling for invalid cities
-- Loading states
-
-✅ **Enhanced UI**
-- Modern card-based design
-- Weather condition icons
-- Responsive layout (mobile & desktop)
-- Animated loading spinner
-- Detailed weather metrics
-
-✅ **Bonus Features**
+- Real-time weather data for any city worldwide
+- Dynamic background based on weather conditions
 - Dark/Light mode toggle
-- Persistent theme preference (localStorage)
+- Responsive design for all screen sizes
+- Detailed weather metrics display
+- Error handling and loading states
 
-## Tech Stack
+## Technologies Used 💻
 
 **Frontend:**
 - React.js
-- Axios for API calls
-- CSS3 with custom animations
+- Axios
+- Weather Icons
 
 **Backend:**
 - Node.js
 - Express
-- Axios for weather API requests
 
-**API:**
+**APIs:**
 - OpenWeatherMap API
 
-## Project Structure
-
-```
-weather-dashboard/
-├── client/               # React frontend
-│   ├── src/
-│   │   ├── components/   # React components
-│   │   ├── App.js        # Main component
-│   │   └── App.css       # Styling
-│   └── package.json
-├── server/               # Node backend
-│   ├── routes/           # API routes
-│   ├── server.js         # Server configuration
-│   └── package.json
-├── .gitignore
-└── README.md
-```
 
 ## Installation
 
@@ -82,7 +53,7 @@ weather-dashboard/
 
 1. **Start backend server** (from `/server` directory)
    ```bash
-   npm start
+   node server.js
    ```
    Server runs on `http://localhost:5000`
 
