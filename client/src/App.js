@@ -4,6 +4,9 @@ import SearchBar from './Components/SearchBar';
 import WeatherCard from './Components/WeatherCard';
 import './App.css';
 
+// Backend URL configuration
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://192.168.1.9:5000';
+
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -33,8 +36,7 @@ function App() {
 
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
-
-      const response = await axios.get(`http://localhost:5000/weather?city=${city}`);
+      const response = await axios.get(`${BACKEND_URL}/weather?city=${city}`);
       setWeatherData(response.data);
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to fetch weather data');
@@ -55,16 +57,27 @@ function App() {
         </button>
       </div>
 
-      <SearchBar onSearch={fetchWeather} />
+      <div className="search-section">
+        <SearchBar onSearch={fetchWeather} />
+      </div>
 
-      {loading && (
-        <div className="loading">
-          <div className="spinner"></div>
-          <p className="loading-text">Loading weather data...</p>
-        </div>
-      )}
-      {error && <div className="error">{error}</div>}
-      {weatherData && <WeatherCard weatherData={weatherData} />}
+      <div className="weather-section">
+        {loading && (
+          <div className="loading">
+            <div className="spinner"></div>
+            <p className="loading-text">Loading weather data...</p>
+          </div>
+        )}
+        
+        {error && (
+          <div className="error">
+            <i className="error-icon">⚠️</i>
+            {error}
+          </div>
+        )}
+        
+        {weatherData && <WeatherCard weatherData={weatherData} />}
+      </div>
     </div>
   );
 }
