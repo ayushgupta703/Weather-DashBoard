@@ -8,7 +8,11 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://192.168.1.9:3000'],
+    origin: [
+        'http://localhost:3000',
+        'http://192.168.1.9:3000',
+        'https://weather-dashboard-frontend.onrender.com'  // Add your deployed frontend URL
+    ],
     methods: ['GET', 'POST'],
     credentials: true
 }));
@@ -48,6 +52,11 @@ app.get('/weather', async (req, res) => {
             res.status(500).json({ error: 'Error fetching weather data' });
         }
     }
+});
+
+// Health check route
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
 });
 
 // Start server
